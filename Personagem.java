@@ -1,50 +1,49 @@
-package model;
+package view;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-@DatabaseTable(tableName = "personagens")
 public class Personagem {
-    @DatabaseField(generatedId = true)
-    private int id;
-    @DatabaseField(canBeNull = false)
-    private String nome;
-    @DatabaseField
-    private int nivel;
-    @DatabaseField
-    private int vida;
-    public Personagem() {
+    private SimpleIntegerProperty id;
+    private SimpleStringProperty nome;
+    private SimpleIntegerProperty nivel;
+    private SimpleIntegerProperty vida;
+
+    public Personagem(int id, String nome, int nivel, int vida) {
+        this.id = new SimpleIntegerProperty(id);
+        this.nome = new SimpleStringProperty(nome);
+        this.nivel = new SimpleIntegerProperty(nivel);
+        this.vida = new SimpleIntegerProperty(vida);
     }
-    public Personagem(String nome, int nivel, int vida) {
-        this.nome = nome;
-        this.nivel = nivel;
-        this.vida = vida;
-    }
+
     public int getId() {
-        return id;
+        return id.get();
     }
+
     public void setId(int id) {
-        this.id = id;
+        this.id.set(id);
     }
+
     public String getNome() {
-        return nome;
+        return nome.get();
     }
-    public int getNivel() {
-        return nivel;
-    }
-    public int getVida() {
-        return vida;
-    }
+
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome.set(nome);
     }
+
+    public int getNivel() {
+        return nivel.get();
+    }
+
     public void setNivel(int nivel) {
-        this.nivel = nivel;
+        this.nivel.set(nivel);
     }
+
+    public int getVida() {
+        return vida.get();
+    }
+
     public void setVida(int vida) {
-        this.vida = vida;
-    }
-    @Override
-    public String toString() {
-        return "Personagem: " + nome + " | Nível: " + nivel + " | Vida: " + vida;
+        this.vida.set(vida);
     }
 }
